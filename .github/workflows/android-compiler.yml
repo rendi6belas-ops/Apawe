@@ -32,7 +32,7 @@ jobs:
         run: |
           cp config.xml compiler-space/config.xml
           rm -rf compiler-space/www/*
-          cp JAM KERJA PRO.html compiler-space/www/index.html
+          cp "JAM KERJA PRO.html" compiler-space/www/index.html
           if [ -f "icon.png" ]; then
             cp icon.png compiler-space/www/icon.png
           fi
@@ -45,5 +45,7 @@ jobs:
       - name: 8. Mengamankan Berkas Output Kompilasi
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ appConfig.name }}-Official-Release-APK
+          name: Unduh-File-APK-Asli
           path: compiler-space/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+
+
