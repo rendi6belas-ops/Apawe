@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ailowbudget.JKRS" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>JAM KERJA RIZA SENSEI</name>
+    <description>Aplikasi hasil konversi otomatis Universal Cloud APK Engine.</description>
+    <author email="dev@lowbudget.ai" href="https://youtube.com/@ailowbudget">AI LOW BUDGET CREATIVE</author>
+    
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    
+    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="BackgroundColor" value="#000000" />
+    
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon src="www/icon.png" />
+    </platform>
+</widget>
