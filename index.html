@@ -43,7 +43,7 @@
                     return (
                         <div className="min-h-screen flex items-center justify-center p-4 bg-rose-50">
                             <div className="bg-white p-8 rounded-3xl shadow-xl max-w-md text-center">
-                                <h1 className="text-2xl font-black text-rose-600 mb-4">Waduh, Crash! ðŸ˜­</h1>
+                                <h1 className="text-2xl font-black text-rose-600 mb-4">Waduh, Crash! 😭</h1>
                                 <p className="text-slate-600 mb-6 text-sm">Ada data yang bentrok. Silakan muat ulang halaman.</p>
                                 <button onClick={() => window.location.reload()} className="w-full bg-rose-500 text-white font-bold py-4 rounded-xl hover:bg-rose-600">Muat Ulang</button>
                             </div>
@@ -137,7 +137,7 @@
                                 lastUpdated: Date.now()
                             });
                             await db.ref(ROOT).update({ meetings: null, rate: null, monthName: null, lastUpdated: null });
-                            console.log('âœ… Data lama dimigrasi ke bulan', key);
+                            console.log('✅ Data lama dimigrasi ke bulan', key);
                         }
                     } catch (e) { console.error('Migrasi gagal:', e); }
                     setIsReady(true);
@@ -252,7 +252,7 @@
             const toggleLock = () => {
                 if (!isPastMonth) return;
                 if (isLocked) {
-                    const pwd = prompt('ðŸ”“ Masukkan sandi untuk membuka kunci bulan sebelumnya:');
+                    const pwd = prompt('🔓 Masukkan sandi untuk membuka kunci bulan sebelumnya:');
                     if (pwd === null) return;
                     if (pwd === UNLOCK_PASSWORD) {
                         setIsUnlocked(true);
@@ -260,10 +260,10 @@
                     } else {
                         setLockShake(true);
                         setTimeout(() => setLockShake(false), 400);
-                        alert('âŒ Sandi salah!');
+                        alert('❌ Sandi salah!');
                     }
                 } else {
-                    if (confirm('ðŸ”’ Kunci kembali semua data bulan sebelumnya?')) {
+                    if (confirm('🔒 Kunci kembali semua data bulan sebelumnya?')) {
                         setIsUnlocked(false);
                         localStorage.setItem('riza_unlocked', '0');
                     }
@@ -305,7 +305,7 @@
                 }));
                 setMeetings(copied);
                 if (typeof prev.rate === 'number') setRate(prev.rate);
-                alert(`âœ… Data disalin dari ${prevKey}. Edit seperlunya, otomatis tersimpan.`);
+                alert(`✅ Data disalin dari ${prevKey}. Edit seperlunya, otomatis tersimpan.`);
             };
 
             const handleReset = () => {
@@ -409,10 +409,10 @@
 
             const renderCloudStatus = () => {
                 if (isLocked) return null;
-                if (saveStatus === 'saving') return <span className="text-[9px] font-bold bg-amber-400/30 text-white px-2 py-0.5 rounded-full">â³ Menyimpan...</span>;
-                if (saveStatus === 'saved') return <span className="text-[9px] font-bold bg-emerald-400/30 text-white px-2 py-0.5 rounded-full">â˜ï¸ Tersimpan</span>;
-                if (saveStatus === 'error') return <span className="text-[9px] font-bold bg-rose-400/30 text-white px-2 py-0.5 rounded-full">âš ï¸ Gagal</span>;
-                return <span className="text-[9px] font-bold bg-white/10 text-indigo-100 px-2 py-0.5 rounded-full">â˜ï¸ Auto-save</span>;
+                if (saveStatus === 'saving') return <span className="text-[9px] font-bold bg-amber-400/30 text-white px-2 py-0.5 rounded-full">⏳ Menyimpan...</span>;
+                if (saveStatus === 'saved') return <span className="text-[9px] font-bold bg-emerald-400/30 text-white px-2 py-0.5 rounded-full">☁️ Tersimpan</span>;
+                if (saveStatus === 'error') return <span className="text-[9px] font-bold bg-rose-400/30 text-white px-2 py-0.5 rounded-full">⚠️ Gagal</span>;
+                return <span className="text-[9px] font-bold bg-white/10 text-indigo-100 px-2 py-0.5 rounded-full">☁️ Auto-save</span>;
             };
 
             const sortedMonthKeys = Object.keys(savedMonths).sort().reverse();
@@ -427,7 +427,7 @@
                                     <IconLockClosed />
                                 </div>
                                 <div>
-                                    <p className="font-black text-sm">ðŸ”’ Bulan Lampau Terkunci</p>
+                                    <p className="font-black text-sm">🔒 Bulan Lampau Terkunci</p>
                                     <p className="text-[10px] text-amber-100 font-medium">Gaji bulan ini aman dari editan</p>
                                 </div>
                             </div>
@@ -444,7 +444,7 @@
                                     <IconLockOpen />
                                 </div>
                                 <div>
-                                    <p className="font-black text-sm">ðŸ”“ Mode Edit Terbuka</p>
+                                    <p className="font-black text-sm">🔓 Mode Edit Terbuka</p>
                                     <p className="text-[10px] text-emerald-100 font-medium">Semua bulan lampau bisa diedit</p>
                                 </div>
                             </div>
@@ -473,12 +473,12 @@
 
                             {currentMonth !== THIS_MONTH && (
                                 <button onClick={() => handleMonthChange(THIS_MONTH)} className="text-[10px] font-bold bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full mb-3 transition-colors">
-                                    ðŸ“… Ke Bulan Ini
+                                    📅 Ke Bulan Ini
                                 </button>
                             )}
 
                             <div className="flex items-center text-xl md:text-2xl font-black mb-1">
-                                <span className="mr-2 whitespace-nowrap">{isLocked ? 'ðŸ”’' : isPastMonth ? 'ðŸ”“' : 'ðŸ“–'}</span>
+                                <span className="mr-2 whitespace-nowrap">{isLocked ? '🔒' : isPastMonth ? '🔓' : '📖'}</span>
                                 <input
                                     className={`w-full min-w-0 bg-transparent border-none focus:ring-0 p-0 uppercase placeholder-indigo-300 ${isLocked ? 'cursor-not-allowed text-slate-200' : ''}`}
                                     value={monthName}
@@ -786,7 +786,7 @@
                             {isLocked && <IconLockClosed />}
                         </div>
                         <p className="text-[10px] text-slate-400 font-medium italic">
-                            Dibuat khusus untuk Riza Sensei {isPastMonth ? (isLocked ? 'ðŸ”’' : 'ðŸ”“') : 'â˜ï¸'}
+                            Dibuat khusus untuk Riza Sensei {isPastMonth ? (isLocked ? '🔒' : '🔓') : '☁️'}
                         </p>
                     </div>
                 </div>
